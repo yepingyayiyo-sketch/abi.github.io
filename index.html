@@ -115,7 +115,8 @@ function beli(paket,harga){
   if(!id){alert("Isi ID Player dulu woy");return;}
   document.getElementById("loading").style.display="flex";
   setTimeout(()=>{
-    let wa="https://wa.me/6281234567890?text="
+    // Nomor WA sudah diganti ke milik kamu:
+    let wa="https://wa.me/6289525470774?text="
     +"TOP UP FF%0A"
     +"ID: "+id+"%0A"
     +"Paket: "+paket+"%0A"
@@ -126,4 +127,35 @@ function beli(paket,harga){
 </script>
 
 </body>
-</html>
+</html><script>
+function bocilKetawa(){
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const times = [0, 0.12, 0.24, 0.36]; // ketawa patah-patah
+  times.forEach((t, i) => {
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = "square";
+    o.frequency.setValueAtTime(900 + i*120, ctx.currentTime + t);
+    g.gain.setValueAtTime(0.25, ctx.currentTime + t);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.1);
+    o.connect(g).connect(ctx.destination);
+    o.start(ctx.currentTime + t);
+    o.stop(ctx.currentTime + t + 0.12);
+  });
+}
+
+function beli(paket,harga){
+  bocilKetawa(); // 🔥 SOUND KETAWA
+  let id=document.getElementById("playerId").value;
+  if(!id){alert("Isi ID Player dulu woy");return;}
+  document.getElementById("loading").style.display="flex";
+  setTimeout(()=>{
+    let wa="https://wa.me/6289525470774?text="
+    +"TOP UP FF%0A"
+    +"ID: "+id+"%0A"
+    +"Paket: "+paket+"%0A"
+    +"Harga: Rp"+harga;
+    window.location.href=wa;
+  },1500);
+}
+</script>
