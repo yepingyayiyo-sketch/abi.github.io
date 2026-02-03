@@ -2,163 +2,176 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Top Up FF — Versi Gilak</title>
+<title>Top Up Game — Final All In One</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#000;--card:#151515;--text:#fff;--acc1:#ff9800;--acc2:#ff5722
+}
+.light{
+  --bg:#f5f5f5;--card:#fff;--text:#111
+}
 *{box-sizing:border-box;font-family:Poppins,sans-serif}
-body{margin:0;background:#000;color:#fff;text-align:center}
-header{padding:30px;background:linear-gradient(135deg,#ff9800,#ff5722);color:#000}
-header h1{margin:0;font-size:30px;font-weight:800}
-.container{padding:20px}
-input{
-  width:100%;max-width:420px;
-  padding:12px;border-radius:12px;
-  border:none;margin-bottom:20px;
-  font-size:15px
+body{margin:0;background:var(--bg);color:var(--text);text-align:center}
+header{padding:26px;background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#000}
+.container{padding:18px}
+input,select{
+  width:100%;max-width:420px;padding:12px;border-radius:12px;
+  border:none;margin-bottom:12px;font-size:15px
 }
 .card{
-  background:#151515;
-  border:2px solid #ff9800;
-  border-radius:18px;
-  padding:18px;margin:15px auto;
-  max-width:420px;
-  box-shadow:0 0 20px rgba(255,152,0,.3)
+  background:var(--card);border:2px solid var(--acc1);
+  border-radius:18px;padding:16px;margin:12px auto;max-width:420px;
+  box-shadow:0 0 18px rgba(255,152,0,.25)
 }
-.card h2{margin:0;color:#ff9800}
-.price{font-size:20px;font-weight:700;margin:8px 0}
+.card h2{margin:0;color:var(--acc1)}
+.price{font-size:18px;font-weight:700;margin:6px 0}
 button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,#ff9800,#ff5722);
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer
+  width:100%;padding:13px;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--acc1),var(--acc2));
+  font-weight:800;font-size:15px;cursor:pointer
 }
-button:hover{opacity:.9}
-footer{font-size:12px;color:#aaa;padding:20px}
+.topbar{display:flex;gap:10px;justify-content:center;margin-bottom:10px}
+.small{padding:8px 12px;font-size:12px;border-radius:999px}
+footer{font-size:12px;color:#aaa;padding:16px}
 #loading{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  font-weight:800;
-  color:#ff9800
+  position:fixed;inset:0;background:rgba(0,0,0,.9);
+  display:none;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:var(--acc1);z-index:9
 }
+#serverML{display:none}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🔥 TOP UP FREE FIRE 🔥</h1>
-<p>Versi Gilak • Auto WA • Cepat</p>
+<h1>🔥 TOP UP GAME 🔥</h1>
+<p>Multi Game • Auto Paket • All In One</p>
 </header>
 
 <div class="container">
 
+<div class="topbar">
+  <button class="small" onclick="toggleTheme()">🌗 Theme</button>
+  <button class="small" onclick="toggleSound()">🔊 Sound</button>
+</div>
+
+<select id="game" onchange="cekGame()">
+  <option value="Free Fire">🔥 Free Fire</option>
+  <option value="Mobile Legends">🛡️ Mobile Legends</option>
+  <option value="PUBG Mobile">🎯 PUBG Mobile</option>
+  <option value="Genshin Impact">⚔️ Genshin Impact</option>
+</select>
+
 <input id="playerId" placeholder="Masukkan ID Player">
+<input id="serverML" placeholder="Server ML (contoh: 1234)">
 
-<div class="card">
-<h2>💎 5 Diamond</h2>
-<div class="price">Rp1.000</div>
-<button onclick="beli('5 DM','1000')">Beli</button>
-</div>
+<select id="payment">
+  <option value="QRIS">💳 QRIS</option>
+  <option value="DANA">💙 DANA</option>
+  <option value="OVO">💜 OVO</option>
+  <option value="GoPay">💚 GoPay</option>
+</select>
 
-<div class="card">
-<h2>💎 10 Diamond</h2>
-<div class="price">Rp2.000</div>
-<button onclick="beli('10 DM','2000')">Beli</button>
-</div>
-
-<div class="card">
-<h2>💎 20 Diamond</h2>
-<div class="price">Rp4.000</div>
-<button onclick="beli('20 DM','4000')">Beli</button>
-</div>
-
-<div class="card">
-<h2>💎 50 Diamond</h2>
-<div class="price">Rp8.000</div>
-<button onclick="beli('50 DM','8000')">Beli</button>
-</div>
-
-<div class="card">
-<h2>💎 70 Diamond</h2>
-<div class="price">Rp10.000</div>
-<button onclick="beli('70 DM','10000')">Beli</button>
-</div>
-
-<div class="card">
-<h2>💎 140 Diamond</h2>
-<div class="price">Rp20.000</div>
-<button onclick="beli('140 DM','20000')">Beli</button>
-</div>
+<div id="paketArea"></div>
 
 </div>
 
 <footer>
-© 2026 • FF Top Up <br>
+© 2026 • Multi Game Top Up <br>
 Abi mode iblis 🗿🔥
 </footer>
 
-<div id="loading">⏳ Sedang diproses...</div>
+<div id="loading">⏳ Diproses...</div>
 
 <script>
-function beli(paket,harga){
-  let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
-  document.getElementById("loading").style.display="flex";
-  setTimeout(()=>{
-    // Nomor WA sudah diganti ke milik kamu:
-    let wa="https://wa.me/6289525470774?text="
-    +"TOP UP FF%0A"
-    +"ID: "+id+"%0A"
-    +"Paket: "+paket+"%0A"
-    +"Harga: Rp"+harga;
-    window.location.href=wa;
-  },1500);
-}
-</script>
+let soundOn=true;
 
-</body>
-</html><script>
-function bocilKetawa(){
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const times = [0, 0.12, 0.24, 0.36]; // ketawa patah-patah
-  times.forEach((t, i) => {
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.type = "square";
-    o.frequency.setValueAtTime(900 + i*120, ctx.currentTime + t);
-    g.gain.setValueAtTime(0.25, ctx.currentTime + t);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.1);
-    o.connect(g).connect(ctx.destination);
-    o.start(ctx.currentTime + t);
-    o.stop(ctx.currentTime + t + 0.12);
+// DATA PAKET
+const paket={
+  "Free Fire":[
+    ["5 DM",1000],["10 DM",2000],["20 DM",4000],
+    ["50 DM",8000],["70 DM",10000],["140 DM",20000]
+  ],
+  "Mobile Legends":[
+    ["86 Diamonds",20000],["172 Diamonds",40000],["257 Diamonds",60000]
+  ],
+  "PUBG Mobile":[
+    ["60 UC",15000],["180 UC",45000]
+  ],
+  "Genshin Impact":[
+    ["60 Genesis",15000],["300 Genesis",75000]
+  ]
+};
+
+function renderPaket(){
+  let g=document.getElementById("game").value;
+  let area=document.getElementById("paketArea");
+  area.innerHTML="";
+  paket[g].forEach(p=>{
+    area.innerHTML+=`
+    <div class="card">
+      <h2>${p[0]}</h2>
+      <div class="price">Rp${p[1].toLocaleString()}</div>
+      <button onclick="beli('${p[0]}','${p[1]}')">Beli</button>
+    </div>`;
   });
 }
 
-function beli(paket,harga){
-  bocilKetawa(); // 🔥 SOUND KETAWA
+function bocilKetawa(){
+  if(!soundOn) return;
+  const ctx=new (window.AudioContext||window.webkitAudioContext)();
+  [0,0.12,0.24].forEach((t,i)=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type="square";o.frequency.setValueAtTime(800+i*150,ctx.currentTime+t);
+    g.gain.setValueAtTime(.25,ctx.currentTime+t);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.1);
+    o.connect(g).connect(ctx.destination);
+    o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.12);
+  });
+}
+
+function cekGame(){
+  let g=document.getElementById("game").value;
+  document.getElementById("serverML").style.display =
+    g==="Mobile Legends"?"block":"none";
+  renderPaket();
+}
+
+function beli(paketNama,harga){
+  bocilKetawa();
   let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
+  let g=document.getElementById("game").value;
+  let s=document.getElementById("serverML").value;
+  let pay=document.getElementById("payment").value;
+
+  if(!id){alert("Isi ID dulu woy");return;}
+  if(g==="Mobile Legends"&&!s){alert("Server ML jangan kosong");return;}
+
   document.getElementById("loading").style.display="flex";
+
   setTimeout(()=>{
-    let wa="https://wa.me/6289525470774?text="
-    +"TOP UP FF%0A"
-    +"ID: "+id+"%0A"
-    +"Paket: "+paket+"%0A"
-    +"Harga: Rp"+harga;
-    window.location.href=wa;
-  },1500);
-}<audio controls>
-  <source src="https://drive.google.com/uc?export=download&id=1CMd6AsH_u_h_RYXIABx60NJ8TwJ_Vtjz" type="audio/mp3">
-  Browser kamu gak support audio.
-</audio>
+    let txt=
+      "TOP UP GAME%0A"+
+      "Game: "+g+"%0A"+
+      "ID: "+id+
+      (g==="Mobile Legends"?"%0AServer: "+s:"")+
+      "%0APaket: "+paketNama+
+      "%0AHarga: Rp"+harga+
+      "%0APembayaran: "+pay;
+
+    location.href="https://wa.me/6289525470774?text="+txt;
+  },1200);
+}
+
+function toggleTheme(){document.body.classList.toggle("light")}
+function toggleSound(){soundOn=!soundOn}
+
+renderPaket();
 </script>
+
+</body>
+</html>
