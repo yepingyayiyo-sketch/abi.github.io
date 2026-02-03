@@ -1,151 +1,129 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Top Up Diamond Free Fire</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Top Up FF — Versi Gilak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background:
-        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-        url("bg-ff.jpg") no-repeat center/cover;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 420px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .logo {
-      width: 80px;
-      margin: 10px auto;
-    }
-
-    .banner {
-      width: 100%;
-      border-radius: 15px;
-      margin: 15px 0;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
-
-    h1 {
-      margin: 10px 0 5px;
-    }
-
-    .tagline {
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-
-    .card {
-      background: rgba(0,0,0,0.65);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: 16px;
-    }
-
-    li {
-      margin: 8px 0;
-    }
-
-    input {
-      width: 90%;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      margin: 8px 0;
-      font-size: 16px;
-    }
-
-    .wa-btn {
-      background: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    .floating-wa {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 16px 18px;
-      border-radius: 50%;
-      font-size: 24px;
-      text-decoration: none;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-    }
-
-    footer {
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 30px;
-    }
-  </style>
+<style>
+*{box-sizing:border-box;font-family:Poppins,sans-serif}
+body{margin:0;background:#000;color:#fff;text-align:center}
+header{padding:30px;background:linear-gradient(135deg,#ff9800,#ff5722);color:#000}
+header h1{margin:0;font-size:30px;font-weight:800}
+.container{padding:20px}
+input{
+  width:100%;max-width:420px;
+  padding:12px;border-radius:12px;
+  border:none;margin-bottom:20px;
+  font-size:15px
+}
+.card{
+  background:#151515;
+  border:2px solid #ff9800;
+  border-radius:18px;
+  padding:18px;margin:15px auto;
+  max-width:420px;
+  box-shadow:0 0 20px rgba(255,152,0,.3)
+}
+.card h2{margin:0;color:#ff9800}
+.price{font-size:20px;font-weight:700;margin:8px 0}
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ff9800,#ff5722);
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer
+}
+button:hover{opacity:.9}
+footer{font-size:12px;color:#aaa;padding:20px}
+#loading{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:800;
+  color:#ff9800
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<header>
+<h1>🔥 TOP UP FREE FIRE 🔥</h1>
+<p>Versi Gilak • Auto WA • Cepat</p>
+</header>
 
-    <!-- LOGO -->
-    <img src="logo-ff.png" class="logo" alt="Logo">
+<div class="container">
 
-    <!-- BANNER -->
-    <img src="ff-banner.jpg" class="banner" alt="Free Fire">
+<input id="playerId" placeholder="Masukkan ID Player">
 
-    <h1>🔥 TOP UP DIAMOND FF 🔥</h1>
-    <p class="tagline">Cepat • Aman • Terpercaya</p>
+<div class="card">
+<h2>💎 5 Diamond</h2>
+<div class="price">Rp1.000</div>
+<button onclick="beli('5 DM','1000')">Beli</button>
+</div>
 
-    <!-- FORM ID -->
-    <div class="card">
-      <h2>Masukkan ID Player</h2>
-      <input type="text" placeholder="ID Player (123456789)">
-      <input type="text" placeholder="Server (contoh: ID)">
-    </div>
+<div class="card">
+<h2>💎 10 Diamond</h2>
+<div class="price">Rp2.000</div>
+<button onclick="beli('10 DM','2000')">Beli</button>
+</div>
 
-    <!-- PAKET -->
-    <div class="card">
-      <h2>Paket Diamond</h2>
-      <ul>
-        <li>💎 50 Diamond — Rp8.000</li>
-        <li>💎 100 Diamond — Rp15.000</li>
-        <li>💎 210 Diamond — Rp30.000</li>
-        <li>💎 355 Diamond — Rp50.000</li>
-      </ul>
+<div class="card">
+<h2>💎 20 Diamond</h2>
+<div class="price">Rp4.000</div>
+<button onclick="beli('20 DM','4000')">Beli</button>
+</div>
 
-      <a href="https://wa.me/6289525470774" class="wa-btn">
-        💬 Order via WhatsApp
-      </a>
-    </div>
+<div class="card">
+<h2>💎 50 Diamond</h2>
+<div class="price">Rp8.000</div>
+<button onclick="beli('50 DM','8000')">Beli</button>
+</div>
 
-    <footer>
-      © 2026 Abi Top Up FF
-    </footer>
+<div class="card">
+<h2>💎 70 Diamond</h2>
+<div class="price">Rp10.000</div>
+<button onclick="beli('70 DM','10000')">Beli</button>
+</div>
 
-  </div>
+<div class="card">
+<h2>💎 140 Diamond</h2>
+<div class="price">Rp20.000</div>
+<button onclick="beli('140 DM','20000')">Beli</button>
+</div>
 
-  <!-- WHATSAPP NGAMBANG -->
-  <a href="https://wa.me/6289525470774" class="floating-wa">💬</a>
+</div>
+
+<footer>
+© 2026 • FF Top Up <br>
+Abi mode iblis 🗿🔥
+</footer>
+
+<div id="loading">⏳ Sedang diproses...</div>
+
+<script>
+function beli(paket,harga){
+  let id=document.getElementById("playerId").value;
+  if(!id){alert("Isi ID Player dulu woy");return;}
+  document.getElementById("loading").style.display="flex";
+  setTimeout(()=>{
+    let wa="https://wa.me/6281234567890?text="
+    +"TOP UP FF%0A"
+    +"ID: "+id+"%0A"
+    +"Paket: "+paket+"%0A"
+    +"Harga: Rp"+harga;
+    window.location.href=wa;
+  },1500);
+}
+</script>
 
 </body>
 </html>
