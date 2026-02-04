@@ -66,38 +66,38 @@ footer{font-size:12px;color:#aaa;padding:20px}
 
 <div class="card">
 <h2>💎 5 Diamond</h2>
-<div class="price">Rp1.000</div>
-<button onclick="beli('5 DM','1000')">Beli</button>
+<div class="price">Rp2.500</div>
+<button onclick="beli('5 DM','2500')">Beli</button>
 </div>
 
 <div class="card">
 <h2>💎 10 Diamond</h2>
-<div class="price">Rp2.000</div>
-<button onclick="beli('10 DM','2000')">Beli</button>
+<div class="price">Rp3.500</div>
+<button onclick="beli('10 DM','3500')">Beli</button>
 </div>
 
 <div class="card">
 <h2>💎 20 Diamond</h2>
-<div class="price">Rp4.000</div>
-<button onclick="beli('20 DM','4000')">Beli</button>
+<div class="price">Rp5.500</div>
+<button onclick="beli('20 DM','5500')">Beli</button>
 </div>
 
 <div class="card">
 <h2>💎 50 Diamond</h2>
-<div class="price">Rp8.000</div>
-<button onclick="beli('50 DM','8000')">Beli</button>
+<div class="price">Rp9.500</div>
+<button onclick="beli('50 DM','9500')">Beli</button>
 </div>
 
 <div class="card">
 <h2>💎 70 Diamond</h2>
-<div class="price">Rp10.000</div>
-<button onclick="beli('70 DM','10000')">Beli</button>
+<div class="price">Rp11.500</div>
+<button onclick="beli('70 DM','11500')">Beli</button>
 </div>
 
 <div class="card">
 <h2>💎 140 Diamond</h2>
-<div class="price">Rp20.000</div>
-<button onclick="beli('140 DM','20000')">Beli</button>
+<div class="price">Rp21.500</div>
+<button onclick="beli('140 DM','21500')">Beli</button>
 </div>
 
 </div>
@@ -112,10 +112,13 @@ Abi mode iblis 🗿🔥
 <script>
 function beli(paket,harga){
   let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
+  if(!id){
+    alert("Isi ID Player dulu woy");
+    return;
+  }
   document.getElementById("loading").style.display="flex";
+
   setTimeout(()=>{
-    // Nomor WA sudah diganti ke milik kamu:
     let wa="https://wa.me/6289525470774?text="
     +"TOP UP FF%0A"
     +"ID: "+id+"%0A"
@@ -124,14 +127,12 @@ function beli(paket,harga){
     window.location.href=wa;
   },1500);
 }
-</script>
 
-</body>
-</html><script>
+// efek suara bocil ketawa (FIX)
 function bocilKetawa(){
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const times = [0, 0.12, 0.24, 0.36]; // ketawa patah-patah
-  times.forEach((t, i) => {
+  const times = [0, 0.12, 0.24, 0.36];
+  times.forEach((t,i)=>{
     const o = ctx.createOscillator();
     const g = ctx.createGain();
     o.type = "square";
@@ -143,22 +144,7 @@ function bocilKetawa(){
     o.stop(ctx.currentTime + t + 0.12);
   });
 }
-
-function beli(paket,harga){
-  bocilKetawa(); // 🔥 SOUND KETAWA
-  let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
-  document.getElementById("loading").style.display="flex";
-  setTimeout(()=>{
-    let wa="https://wa.me/6289525470774?text="
-    +"TOP UP FF%0A"
-    +"ID: "+id+"%0A"
-    +"Paket: "+paket+"%0A"
-    +"Harga: Rp"+harga;
-    window.location.href=wa;
-  },1500);
-}<audio controls>
-  <source src="https://drive.google.com/uc?export=download&id=1CMd6AsH_u_h_RYXIABx60NJ8TwJ_Vtjz" type="audio/mp3">
-  Browser kamu gak support audio.
-</audio>
 </script>
+
+</body>
+</html>
