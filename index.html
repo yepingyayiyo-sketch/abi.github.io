@@ -1,101 +1,138 @@
-<script>
-let soundOn=true;
-const TAMBAHAN = 1500;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Top Up Game — All In One</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
+<style>
+:root{
+  --bg:#000;--card:#151515;--text:#fff;--acc1:#ff9800;--acc2:#ff5722
+}
+.light{--bg:#f5f5f5;--card:#fff;--text:#111}
+*{box-sizing:border-box;font-family:Poppins,sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);text-align:center}
+header{padding:26px;background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#000}
+.container{padding:18px}
+button{
+  width:100%;max-width:420px;
+  padding:14px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--acc1),var(--acc2));
+  font-weight:800;font-size:15px;cursor:pointer;margin:6px auto
+}
+.card{
+  background:var(--card);border:2px solid var(--acc1);
+  border-radius:18px;padding:16px;margin:12px auto;max-width:420px;
+  box-shadow:0 0 18px rgba(255,152,0,.25)
+}
+.price{font-size:18px;font-weight:700;margin:6px 0}
+input,select{
+  width:100%;max-width:420px;
+  padding:12px;border-radius:12px;
+  border:none;margin-bottom:12px;font-size:15px
+}
+#formArea{display:none}
+#serverML{display:none}
+#loading{
+  position:fixed;inset:0;background:rgba(0,0,0,.9);
+  display:none;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:var(--acc1)
+}
+footer{font-size:12px;color:#aaa;padding:16px}
+</style>
+</head>
+
+<body>
+
+<div style="background:linear-gradient(135deg,#ff9800,#ff5722);color:#000;padding:12px;font-weight:800">
+🚀 UPDATE TOKO — MULTI GAME 🎮
+</div>
+
+<header>
+<h1>🔥 TOP UP GAME 🔥</h1>
+<p>Pilih Game → Masukin ID → Pilih Paket</p>
+</header>
+
+<div class="container">
+
+<button onclick="pilihGame('Free Fire')">🔥 Free Fire</button>
+<button onclick="pilihGame('Mobile Legends')">🛡️ Mobile Legends</button>
+<button onclick="pilihGame('PUBG Mobile')">🎯 PUBG Mobile</button>
+<button onclick="pilihGame('Genshin Impact')">⚔️ Genshin Impact</button>
+<button onclick="pilihGame('Roblox')">🟥 Roblox</button>
+
+<div id="formArea">
+  <input id="playerId" placeholder="Masukkan ID / Username Player">
+  <input id="serverML" placeholder="Server ML (contoh: 1234)">
+
+  <select id="payment">
+    <option>QRIS</option>
+    <option>DANA</option>
+    <option>OVO</option>
+    <option>GoPay</option>
+  </select>
+
+  <div id="paketArea"></div>
+</div>
+
+</div>
+
+<footer>
+© 2026 • Abi mode iblis 🗿🔥
+</footer>
+
+<div id="loading">⏳ Diproses...</div>
+
+<script>
+let gameDipilih="";
 const paket={
-  "Free Fire":[
-    ["5 DM",1000+TAMBAHAN],
-    ["10 DM",2000+TAMBAHAN],
-    ["20 DM",4000+TAMBAHAN],
-    ["50 DM",8000+TAMBAHAN],
-    ["70 DM",10000+TAMBAHAN],
-    ["140 DM",20000+TAMBAHAN]
-  ],
-  "Mobile Legends":[
-    ["86 Diamonds",20000+TAMBAHAN],
-    ["172 Diamonds",40000+TAMBAHAN],
-    ["257 Diamonds",60000+TAMBAHAN]
-  ],
-  "PUBG Mobile":[
-    ["60 UC",15000+TAMBAHAN],
-    ["180 UC",45000+TAMBAHAN]
-  ],
-  "Genshin Impact":[
-    ["60 Genesis",15000+TAMBAHAN],
-    ["300 Genesis",75000+TAMBAHAN]
-  ],
-  "Roblox":[
-    ["80 Robux",15000+TAMBAHAN],
-    ["400 Robux",75000+TAMBAHAN],
-    ["800 Robux",150000+TAMBAHAN],
-    ["1700 Robux",300000+TAMBAHAN]
-  ]
+  "Free Fire":[["5 DM",2500],["10 DM",3500],["20 DM",5500],["50 DM",9500]],
+  "Mobile Legends":[["86 Diamonds",21500],["172 Diamonds",41500]],
+  "PUBG Mobile":[["60 UC",16500]],
+  "Genshin Impact":[["60 Genesis",16500]],
+  "Roblox":[["80 Robux",16500]]
 };
 
+function pilihGame(game){
+  gameDipilih=game;
+  formArea.style.display="block";
+  serverML.style.display=game==="Mobile Legends"?"block":"none";
+  renderPaket();
+  playerId.focus();
+}
+
 function renderPaket(){
-  let g=document.getElementById("game").value;
-  let area=document.getElementById("paketArea");
-  area.innerHTML="";
-  paket[g].forEach(p=>{
-    area.innerHTML+=`
+  paketArea.innerHTML="";
+  paket[gameDipilih].forEach(p=>{
+    paketArea.innerHTML+=`
     <div class="card">
-      <h2>${p[0]}</h2>
+      <h3>${p[0]}</h3>
       <div class="price">Rp${p[1].toLocaleString("id-ID")}</div>
-      <button onclick="beli('${p[0]}','${p[1]}')">Beli</button>
+      <button onclick="beli('${p[0]}',${p[1]})">Beli</button>
     </div>`;
   });
 }
 
-function bocilKetawa(){
-  if(!soundOn) return;
-  const ctx=new (window.AudioContext||window.webkitAudioContext)();
-  [0,0.12,0.24].forEach((t,i)=>{
-    const o=ctx.createOscillator(),g=ctx.createGain();
-    o.type="square";
-    o.frequency.setValueAtTime(800+i*150,ctx.currentTime+t);
-    g.gain.setValueAtTime(.25,ctx.currentTime+t);
-    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.1);
-    o.connect(g).connect(ctx.destination);
-    o.start(ctx.currentTime+t);
-    o.stop(ctx.currentTime+t+.12);
-  });
-}
-
-function cekGame(){
-  let g=document.getElementById("game").value;
-  document.getElementById("serverML").style.display =
-    g==="Mobile Legends"?"block":"none";
-  renderPaket();
-}
-
 function beli(paketNama,harga){
-  bocilKetawa();
-  let id=document.getElementById("playerId").value;
-  let g=document.getElementById("game").value;
-  let s=document.getElementById("serverML").value;
-  let pay=document.getElementById("payment").value;
+  if(!playerId.value) return alert("Isi ID dulu");
+  if(gameDipilih==="Mobile Legends"&&!serverML.value)
+    return alert("Isi Server ML");
 
-  if(!id){alert("Isi ID dulu woy");return;}
-  if(g==="Mobile Legends"&&!s){alert("Server ML jangan kosong");return;}
+  loading.style.display="flex";
 
-  document.getElementById("loading").style.display="flex";
+  const msg=`TOP UP GAME
+Game: ${gameDipilih}
+ID: ${playerId.value}${gameDipilih==="Mobile Legends"?"\nServer: "+serverML.value:""}
+Paket: ${paketNama}
+Harga: Rp${harga}
+Pembayaran: ${payment.value}`;
 
   setTimeout(()=>{
-    let txt=
-      "TOP UP GAME%0A"+
-      "Game: "+g+"%0A"+
-      "ID: "+id+
-      (g==="Mobile Legends"?"%0AServer: "+s:"")+
-      "%0APaket: "+paketNama+
-      "%0AHarga: Rp"+harga+
-      "%0APembayaran: "+pay;
-
-    location.href="https://wa.me/6289525470774?text="+txt;
+    location.href="https://wa.me/6289525470774?text="+encodeURIComponent(msg);
   },1200);
 }
-
-function toggleTheme(){document.body.classList.toggle("light")}
-function toggleSound(){soundOn=!soundOn}
-
-renderPaket();
 </script>
+
+</body>
+</html>
