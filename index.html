@@ -1,164 +1,42 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<title>Top Up FF — Versi Gilak</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+# 🏃 JOKI AFK TREADMILL BY ABI
 
-<style>
-*{box-sizing:border-box;font-family:Poppins,sans-serif}
-body{margin:0;background:#000;color:#fff;text-align:center}
-header{padding:30px;background:linear-gradient(135deg,#ff9800,#ff5722);color:#000}
-header h1{margin:0;font-size:30px;font-weight:800}
-.container{padding:20px}
-input{
-  width:100%;max-width:420px;
-  padding:12px;border-radius:12px;
-  border:none;margin-bottom:20px;
-  font-size:15px
-}
-.card{
-  background:#151515;
-  border:2px solid #ff9800;
-  border-radius:18px;
-  padding:18px;margin:15px auto;
-  max-width:420px;
-  box-shadow:0 0 20px rgba(255,152,0,.3)
-}
-.card h2{margin:0;color:#ff9800}
-.price{font-size:20px;font-weight:700;margin:8px 0}
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,#ff9800,#ff5722);
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer
-}
-button:hover{opacity:.9}
-footer{font-size:12px;color:#aaa;padding:20px}
-#loading{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  font-weight:800;
-  color:#ff9800
-}
-</style>
-</head>
+Layanan Joki AFK Treadmill otomatis, aman, dan terpercaya untuk menaikkan *stats* karakter kamu tanpa perlu repot menyalakan perangkat seharian.
 
-<body>
+---
 
-<header>
-<h1>🔥 TOP UP FREE FIRE 🔥</h1>
-<p>Versi Gilak • Auto WA • Cepat</p>
-</header>
+## 💰 Daftar Harga (Pricelist)
 
-<div class="container">
+| Durasi | Harga | Keterangan |
+| :--- | :--- | :--- |
+| **1 Jam** | **Rp 500** (500p) | Tes / Singkat |
+| **3 Jam** | **Rp 1.000** (1K) | Hemat |
+| **10 Jam** | **Rp 2.000** (2K) | Push Stat |
+| **24 Jam** | **Rp 3.000** (3K) | **Paling Murah (Best Value!)** |
 
-<input id="playerId" placeholder="Masukkan ID Player">
+---
 
-<div class="card">
-<h2>💎 5 Diamond</h2>
-<div class="price">Rp1.000</div>
-<button onclick="beli('5 DM','1000')">Beli</button>
-</div>
+## ⚡ Keunggulan Layanan
 
-<div class="card">
-<h2>💎 10 Diamond</h2>
-<div class="price">Rp2.000</div>
-<button onclick="beli('10 DM','2000')">Beli</button>
-</div>
+* ✅ **Aman & Amanah:** Murni AFK tanpa menggunakan *cheat* berbahaya.
+* 🔄 **Anti-AFK Kick:** Proteksi sistem dari *idle* agar tidak terputus dari game.
+* 📊 **Laporan Progress:** Bukti pengerjaan dikirim secara berkala.
 
-<div class="card">
-<h2>💎 20 Diamond</h2>
-<div class="price">Rp4.000</div>
-<button onclick="beli('20 DM','4000')">Beli</button>
-</div>
+---
 
-<div class="card">
-<h2>💎 50 Diamond</h2>
-<div class="price">Rp8.000</div>
-<button onclick="beli('50 DM','8000')">Beli</button>
-</div>
+## 📜 Komitmen Kejujuran
 
-<div class="card">
-<h2>💎 70 Diamond</h2>
-<div class="price">Rp10.000</div>
-<button onclick="beli('70 DM','10000')">Beli</button>
-</div>
+> **Surah Al-Baqarah Ayat 9**
+> 
+> يُخٰدِعُوْنَ اللّٰهَ وَالَّذِيْنَ اٰمَنُوْا ۚ وَمَا يَخْدَعُوْنَ اِلَّآ اَنْفُسَهُمْ وَمَا يَشْعُرُوْنَۗ
+> 
+> *Yukhādi‘unallāha wallażīna āmanū, wa mā yakhda‘ūna illā anfusahum wa mā yash‘urūn.*
+> 
+> **Artinya:** *"Mereka hendak menipu Allah dan orang-orang yang beriman, padahal mereka hanyalah menipu diri sendiri tanpa mereka sadari."*
 
-<div class="card">
-<h2>💎 140 Diamond</h2>
-<div class="price">Rp20.000</div>
-<button onclick="beli('140 DM','20000')">Beli</button>
-</div>
+---
 
-</div>
+## 📩 Hubungi & Order
 
-<footer>
-© 2026 • FF Top Up <br>
-Abi mode iblis 🗿🔥
-</footer>
+Silakan kirim pesan melalui kontak resmi untuk memulai order:
 
-<div id="loading">⏳ Sedang diproses...</div>
-
-<script>
-function beli(paket,harga){
-  let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
-  document.getElementById("loading").style.display="flex";
-  setTimeout(()=>{
-    // Nomor WA sudah diganti ke milik kamu:
-    let wa="https://wa.me/6289525470774?text="
-    +"TOP UP FF%0A"
-    +"ID: "+id+"%0A"
-    +"Paket: "+paket+"%0A"
-    +"Harga: Rp"+harga;
-    window.location.href=wa;
-  },1500);
-}
-</script>
-
-</body>
-</html><script>
-function bocilKetawa(){
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const times = [0, 0.12, 0.24, 0.36]; // ketawa patah-patah
-  times.forEach((t, i) => {
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.type = "square";
-    o.frequency.setValueAtTime(900 + i*120, ctx.currentTime + t);
-    g.gain.setValueAtTime(0.25, ctx.currentTime + t);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.1);
-    o.connect(g).connect(ctx.destination);
-    o.start(ctx.currentTime + t);
-    o.stop(ctx.currentTime + t + 0.12);
-  });
-}
-
-function beli(paket,harga){
-  bocilKetawa(); // 🔥 SOUND KETAWA
-  let id=document.getElementById("playerId").value;
-  if(!id){alert("Isi ID Player dulu woy");return;}
-  document.getElementById("loading").style.display="flex";
-  setTimeout(()=>{
-    let wa="https://wa.me/6289525470774?text="
-    +"TOP UP FF%0A"
-    +"ID: "+id+"%0A"
-    +"Paket: "+paket+"%0A"
-    +"Harga: Rp"+harga;
-    window.location.href=wa;
-  },1500);
-}<audio controls>
-  <source src="https://drive.google.com/uc?export=download&id=1CMd6AsH_u_h_RYXIABx60NJ8TwJ_Vtjz" type="audio/mp3">
-  Browser kamu gak support audio.
-</audio>
-</script>
+* **WhatsApp:** [+62 895-2547-0774](https://wa.me/6289525470774) (`+62 089525470774`)
